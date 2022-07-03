@@ -5,7 +5,7 @@ function ListMovie() {
         <>
             <Navbar />
             <main>
-                <h1>Ini List Movie</h1>
+                <h1>List Movie</h1>
             </main>
         </>
         
