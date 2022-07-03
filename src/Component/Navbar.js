@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom"
 import tickitz from "../img/Tickitz.svg"
-import Home from './../Page/Home/index';
 
 
 function Navbar() {
@@ -27,7 +26,9 @@ function Navbar() {
             </li>
             </ul>
           </div>
+          <Link to="/sign-up">
           <button className="btn btn-primary" type="submit">Sign Up</button>
+          </Link>
         </div>
       </nav>
 

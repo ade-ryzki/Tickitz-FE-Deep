@@ -4,7 +4,8 @@ import Footer from "../../Component/Footer"
 import "./homepage.css"
 import Post1 from "./Post1"
 import Post2 from "./Post2"
-import Section3 from "./Section3"
+import Post3 from "./Post3"
+import Post4 from "./post4"
 
 function Home() {
     useEffect(() => {
@@ -16,7 +17,8 @@ function Home() {
             <main>
                 <Post1 />
                 <Post2 />
-                <Section3 />
+                <Post3 />
+                <Post4 />
             </main>
             <Footer />
         </>
