@@ -1,10 +1,15 @@
 import React from "react";
+import iron from "../../img/Iron.jpg"
 
 function SignUp () {
     return(
         <>
-        <div>
-            <h1>ini </h1>
+        <div className="container">
+            <div>
+                <img src={iron} className="Logo" alt="logo" />
+            </div>
+            <h1>testing Sign Up</h1>
+            <h1>update next time ygy</h1>
         </div>
         </>
     )
