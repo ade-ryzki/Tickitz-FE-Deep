@@ -1,7 +1,7 @@
 function Section3 () {
     return(
         <section>
-            <h1>Ini section 2</h1>
+            <h1>Ini section 3</h1>
         </section>
         
     )
