@@ -39,7 +39,7 @@ function Post2 () {
     // }, [])
     const dispatch = useDispatch()
     useEffect(()=> {
-        dispatch(GetMovie({page:1, limit:5}))
+        dispatch(GetMovie({page:1, limit:10}))// change zero object
     },[])
     
     const data = useSelector((state)=> state.movie)
