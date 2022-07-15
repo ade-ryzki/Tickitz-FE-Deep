@@ -242,45 +242,6 @@ export const MoviesAdmin = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='card shadow admin-body'>
-                                <div className='card-body'>
-                                    <div className="search-box">
-                                        <button className="btn-search"><i className="fas fa-search"></i></button>
-                                        <input type="text" className="input-search" onChange={(e) => searchHandler(e)} placeholder="Type to Search..." />
-                                    </div>
-                                    <div className='table-responsive'>
-                                        <table className='table table-striped table-hover'>
-                                            <thead>
-                                                <tr>
-                                                    <th scope='col'>#</th>
-                                                    <th scope='col'>Title</th>
-                                                    <th scope='col'>Genre</th>
-                                                    <th scope='col'>Duration</th>
-                                                    <th scope='col'>Release Date</th>
-                                                    <th scope='col'>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {movies.loading ? <tr><td colSpan='6' className='text-center'>No Data</td></tr> : !movies.results.data.length ? <tr><td colSpan='6' className='text-center'>Empty Data</td></tr> : movies.results.data.map((movie, index) => {
-                                                    return (<tr key={index}>
-                                                        <th scope='row'>{index + 1}</th>
-                                                        <td>{movie.title}</td>
-                                                        <td>{movie.genre}</td>
-                                                        <td>{movie.duration}</td>
-                                                        <td>{movie.release_date}</td>
-                                                        <td>
-                                                            <div className='d-flex'>
-                                                                <button className='btn btn-primary mx-2' data-bs-toggle="modal" data-bs-target="#modalmovie" onClick={() => editmovie(movie)}><i className='fa fa-pen-to-square'> </i> </button>
-                                                                <button className='btn btn-danger' onClick={() => deletemovie(movie.id)}><i className='fa fa-trash'> </i></button>
-                                                            </div>
-                                                        </td>
-                                                    </tr>)
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
