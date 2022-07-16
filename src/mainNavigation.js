@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './Page/Home/index';
-import ListMovie from './Page/ListMovie/index';
-import MovieDetail from './Page/MovieDetail/index';
-import SignUp from './Page/SignUp/index';
 import { DashboardAdmin, MoviesAdmin, CinemaAdmin } from './Page/Admin';
+import {Home, ListMovie, MovieDetail, SignUp, SignIn} from './Page'
 
 const MainNavigation = () => {
   return (
@@ -15,6 +12,7 @@ const MainNavigation = () => {
         <Route path='/admin/movie' element={<MoviesAdmin />} />
         <Route path='/admin/cinema' element={<CinemaAdmin />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path='/movie-detail'  element={<MovieDetail />}>
         <Route path=':movieId'  element={<MovieDetail />}/>
       </Route>

@@ -1,15 +1,21 @@
 import React from "react";
-// import iron from "../../img/Iron.jpg";
-import '././index.css';
+import logo from "../../img/tickitz-white.svg";
+import "../../css/style.css";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-6 d-none d-md-block image-container">
+          <div
+            className="col-md-6 d-none d-md-block image-container"
+            style={{
+              backgroundImage: `linear-gradient(rgba(43, 21, 107, 0.5), rgba(43, 21, 107, 0.8)), url(./img/image-bg.jpg)`,
+            }}
+          >
             <div className="title-register">
-              <img src="./assets/images/tickitz-white.svg" alt="" />
+              <img src={logo} alt="logo" />
               <h1>Lets build your account</h1>
               <p>
                 To be a loyal moviegoer and access all of features, your details
@@ -76,7 +82,7 @@ function SignUp() {
               </button>
               <div className="text-center link mb-4">
                 Do you already have an account?
-                <a href="sign_in.html">Log In</a>
+                <Link to="/Sign-in">Log In</Link>
               </div>
               <h6>
                 <span>Or</span>
@@ -84,24 +90,24 @@ function SignUp() {
               {/* Mobile */}
               <div className="d-sm-block d-md-none">
                 <div className="d-flex justify-content-between mt-4">
-                  <a href className="btn btn-login-external py-3">
-                    <img src="./assets/icon/ic-google.png" alt="" />
-                  </a>
-                  <a href className="btn btn-login-external py-3">
-                    <img src="./assets/icon/ic-facebook.png" />
-                  </a>
+                  <Link to="" className="btn btn-login-external py-3">
+                    <img src="./icon/ic-google.png" alt="Google" />
+                  </Link>
+                  <Link to="" className="btn btn-login-external py-3">
+                    <img src="./icon/ic-facebook.png" alt="fb" />
+                  </Link>
                 </div>
               </div>
               {/* Desktop */}
               <div className="d-none d-md-block">
                 <div className="d-flex justify-content-between mt-4">
-                  <a href className="btn btn-login-external py-3">
-                    <img src="./assets/icon/ic-google.png" alt="" /> Google
-                  </a>
-                  <a href className="btn btn-login-external py-3">
-                    <img src="./assets/icon/ic-facebook.png" />
+                  <Link to='' className="btn btn-login-external py-3">
+                    <img src="./icon/ic-google.png" alt="Google" />Google
+                  </Link>
+                  <Link to='' className="btn btn-login-external py-3">
+                    <img src="./icon/ic-facebook.png" alt="fb" />
                     Facebook
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

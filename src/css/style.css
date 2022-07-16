@@ -1720,8 +1720,8 @@ footer .copyright {
 }
 
 .image-container {
-  /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(43, 21, 107, 0.8))), url("../assets/images/image-bg.jpg");
-  background-image: linear-gradient(rgba(43, 21, 107, 0.8)), url("../assets/images/image-bg.jpg"); */
+  /* background-image: url(../img/image-bg.jpg), -webkit-gradient(linear, left top, left bottom, from(rgba(43, 21, 107, 0.8))); */
+  /* background-image: linear-gradient(rgba(43, 21, 107, 0.8)), url("../assets/images/image-bg.jpg"); */
   background-size: cover;
   height: 100vh;
 }
