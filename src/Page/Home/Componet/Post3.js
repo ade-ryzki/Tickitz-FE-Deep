@@ -1,7 +1,7 @@
 import React from "react"
-import blackwidow from "../../img/black-widow.png"
-import witches from "../../img/the witches.png"
-import tennet from "../../img/Tenet.png"
+import blackwidow from "../../../img/black-widow.png"
+import witches from "../../../img/the witches.png"
+import tennet from "../../../img/Tenet.png"
 
 function Post3 () {
     return(

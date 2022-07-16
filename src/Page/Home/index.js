@@ -1,19 +1,19 @@
 import { React, useEffect } from "react";
 import Navbar from "../../Component/Navbar";
 import Footer from "../../Component/Footer";
-import "./homepage.css";
-import Post1 from "./Post1";
-import Post2 from "./Post2";
-import Post3 from "./Post3";
-import Post4 from "./post4";
-//add
+import "././Componet/homepage.css";
+import Post1 from "./Componet/Post1";
+import Post2 from "./Componet/Post2";
+import Post3 from "./Componet/Post3";
+import Post4 from "./Componet/post4";
+
 import { useDispatch, useSelector } from "react-redux";
 import { GetMovie } from "../../redux/actions/Movie";
 
 const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(GetMovie({ page: 1, limit: 7 }));
+    dispatch(GetMovie({ page: 1, limit: 10 }));
   }, []);
   // question, ketika di dispatch error white
   const data = useSelector((state) => state.movie);

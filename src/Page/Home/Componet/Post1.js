@@ -1,7 +1,7 @@
 import React from "react"
-import spiderMan from "../../img/spiderman-header.png"
-import lionKing from "../../img/lion-header.png"
-import blackWidow from "../../img/header2.png"
+import spiderMan from "../../../img/spiderman-header.png"
+import lionKing from "../../../img/lion-header.png"
+import blackWidow from "../../../img/header2.png"
 
 
 function Post1 () {

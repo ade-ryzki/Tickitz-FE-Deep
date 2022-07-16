@@ -7,12 +7,12 @@ const MainNavigation = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/list-movie" element={<ListMovie />} />
         <Route path='/admin' element={<DashboardAdmin />} />
         <Route path='/admin/movie' element={<MoviesAdmin />} />
         <Route path='/admin/cinema' element={<CinemaAdmin />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/list-movie" element={<ListMovie />} />
         <Route path='/movie-detail'  element={<MovieDetail />}>
         <Route path=':movieId'  element={<MovieDetail />}/>
       </Route>

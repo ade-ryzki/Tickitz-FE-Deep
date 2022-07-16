@@ -25,7 +25,7 @@ export const GetMovie = ({page=1, limit}) => {
       dispatch(GetMovieRequest())
       axios({
           method: "GET",
-          url: `https://test.dhanz.me/api/v1/movies${page ? `?page=${page}`:``}${limit ? `&limit=${limit}`:``}`,
+          url: `http://localhost:4000/api/v1/movies${page ? `?page=${page}`:``}${limit ? `&limit=${limit}`:``}`,
         }) .then((res)=> { //ketika sukses, dispatch sucess
           dispatch(GetMovieSucess(res.data.data))
           // dispatch(GetMoviesSucess(res.data.data.results)) //trigger / dispatch

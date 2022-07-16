@@ -1,15 +1,8 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+// import axios from 'axios'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { GetMovie, } from "../../redux/actions/Movie"
-//dummy img
-// import avenger from "../../img/avenger.png"
-// import blackwidow from "../../img/black-widow.png"
-// import witches from "../../img/the witches.png"
-// import tennet from "../../img/Tenet.png"
-
-
+import { GetMovie, } from "../../../redux/actions/Movie"
 
 function Post2 () {
     // const [movieSchedule, setMovieSchedule] = useState({
@@ -39,7 +32,7 @@ function Post2 () {
     // }, [])
     const dispatch = useDispatch()
     useEffect(()=> {
-        dispatch(GetMovie({page:1, limit:10}))// change zero object
+        dispatch(GetMovie({page: 1, limit: 10}))// change zero object
     },[])
     
     const data = useSelector((state)=> state.movie)
@@ -63,7 +56,7 @@ function Post2 () {
                         <div className="card-movie" key={index}>
                             <img className="card-movie-list"
                             //insatll. env
-                                src={`${'https://test.dhanz.me/static/'}/${movie.image}`}alt={movie.title}title={movie.title}/>
+                                src={`${'http://localhost:4000/uploads'}/${movie.image}`}alt={movie.title}title={movie.title}/>
                         </div>
                     )
                 })}

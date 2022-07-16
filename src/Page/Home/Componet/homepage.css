@@ -1,3 +1,4 @@
+/* post2 */
 .img-b-1 {
     padding-top: 66px;
   }
@@ -52,9 +53,15 @@
   .card-movie {
     background-color: rgba(255, 255, 255, 0.2);
     border: 2px solid white;
+
     margin: 20px;
     padding: 20px;
     border-radius: 8px;
+  }
+
+  .card-movie-list{
+    width: 159px;
+    height: 224px;
   }
   
   .scrollmonth {
@@ -127,9 +134,9 @@
       margin-left: 50px;
       margin-right: 40px;
     }
-    .card-movie-list-dekstop {
+    /* .card-movie-list-dekstop {
       width: 90%;
-    }
+    } */
     .text-nowshowing {
       display: inline-block;
       padding-bottom: 9px;

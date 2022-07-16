@@ -45,6 +45,18 @@ function SignUp() {
                 <h3>Fill your additional details</h3>
               </div>
               <div className="mb-3 form-input">
+                <label htmlFor="exampleInputUserName" className="form-label">
+                Username
+                </label>
+                <input
+                  type="Username"
+                  className="form-control"
+                  id="exampleInputUserName"
+                  // aria-describedby="Username"
+                  placeholder="Write your Username"
+                />
+              </div>
+              <div className="mb-3 form-input">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Email
                 </label>
