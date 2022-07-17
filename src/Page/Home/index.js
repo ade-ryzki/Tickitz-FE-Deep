@@ -12,8 +12,8 @@ import { GetMovie } from "../../redux/actions/Movie";
 import {useNavigate} from "react-router-dom"
 
 const Home = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // movies 
   useEffect(() => {
     dispatch(GetMovie({ page: 1, limit: 10 }));
