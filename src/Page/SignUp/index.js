@@ -65,7 +65,7 @@ function SignUp() {
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="Write your email"
+                  placeholder="Write your email"         
                 />
               </div>
               <div className="mb-4 form-input">

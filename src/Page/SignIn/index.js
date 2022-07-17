@@ -1,11 +1,34 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import logo from "../../img/tickitz-white.svg";
 import "../../css/style.css";
 import { Link } from "react-router-dom";
+import { AuthSignIn } from "../../redux/actions/Auth";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom"
 
 
+const SignIn=(props)=> {
+  const {data, error, loading, isSignIn} = useSelector((state)=> state.auth)
+  // console.log(loading, 'loading')
+  const dispatch = useDispatch()
+  let navigate = useNavigate();
+  const [formSignIn, setFormSignIn]  = useState({
+    email: '',
+    password: ''
+  })
+  const handleSignIn = (e)=>{
+    e.preventDefault()
+    // console.log(formSignIn, 'data login')
+    dispatch(AuthSignIn(formSignIn))
+  }
+  useEffect(()=> {
+    if(isSignIn === true) {
+        navigate('/', {replace: true}) //kita menghapus routing login dari browser
+    }else {
+        navigate('/sign-in', {replace: true})
+    }
+},[isSignIn])
 
-function SignIn() {
   return (
     <>
       <div className="container-fluid">
@@ -19,7 +42,7 @@ function SignIn() {
             </div>
           </div>
           <div className="col-md-6 form-container-sign-in">
-            <form className="form-box" action="index.html">
+            <form onSubmit={handleSignIn} className="form-box">
               <div className="mb-4">
                 <h3>Sign In</h3>
                 <p>
@@ -37,6 +60,12 @@ function SignIn() {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Write your email"
+                  required onChange={(e)=>{
+                    setFormSignIn((prevData)=>({
+                      ...prevData,
+                      email: e.target.value
+                    }))
+                  }}
                 />
               </div>
               <div className="mb-4 form-input">
@@ -48,11 +77,23 @@ function SignIn() {
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Write your password"
+                  required onChange={(e)=>{
+                    setFormSignIn((prevData)=>({
+                      ...prevData,
+                      password: e.target.value
+                    }))
+                  }}
                 />
               </div>
-              <button type="submit" className="btn btn-join-now py-3 mb-4">
-                Sign In
-              </button>
+              {loading ? (
+                    <button type="submit" className="btn btn-join-now py-3 mb-4" disabled={true}>Loading...</button>
+                    ):(
+                      <button type="submit" className="btn btn-join-now py-3 mb-4">Sign In</button>
+                )}
+                {error && (
+                    <div>{error.message}</div>
+                )}
+              {/* <button type="submit" className= {`btn btn-join-now py-3 mb-4`} disabled={loading ? true:false}>{'Loading...':'Sign In'}</button> */}
               <div className="text-center link mb-4">
                 Forgot your password?
                 <a href="forgot_password.html">Reset now</a>

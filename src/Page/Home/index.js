@@ -9,15 +9,25 @@ import Post4 from "./Componet/post4";
 
 import { useDispatch, useSelector } from "react-redux";
 import { GetMovie } from "../../redux/actions/Movie";
+import {useNavigate} from "react-router-dom"
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  // movies 
   useEffect(() => {
     dispatch(GetMovie({ page: 1, limit: 10 }));
-  }, []);
-  // question, ketika di dispatch error white
-  const data = useSelector((state) => state.movie);
+  },[]);
+  
+  const {data, error, loading } = useSelector((state) => state.movie);
+  const {isSignIn} = useSelector((state) => state.auth);
+  useEffect(()=> {
+    if(isSignIn === false){// change == to ===
+      navigate('/sign-in', {replace: true})
+    }
+},[isSignIn])
   console.log(data);
+  
   return (
     <>
       <Navbar />
