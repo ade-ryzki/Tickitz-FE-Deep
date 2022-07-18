@@ -60,7 +60,11 @@ export const MoviesAdmin = () => {
             synopsis: "",
             image: "",
         })
-
+        const result = await axios({
+            method: 'POST',
+            url: `${process.env.REACT_APP_URL_API}/movies`,
+            data: formData,
+        })
     }
 
     const editmovie = async (movie) => {
