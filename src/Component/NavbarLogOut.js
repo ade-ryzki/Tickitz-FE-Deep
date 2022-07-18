@@ -1,16 +1,8 @@
 import {Link} from "react-router-dom"
 import tickitz from "../img/Tickitz.svg"
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { AuthLogOut } from "../redux/actions/Auth";
-import { GetMovie } from './../redux/actions/Movie';
 
 
 function Navbar() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch((GetMovie({ page: 1, limit: 10 })));
-  },[]);
     return(
         <>
         <nav className="navbar navbar-desktop navbar-expand-lg bg-white">
@@ -34,12 +26,8 @@ function Navbar() {
             </li>
             </ul>
           </div>
-          <Link to="/sign-up">
-          {/* <button className="btn btn-primary" type="submit">Sign Up</button> */}
-          <button className="btn btn-primary"onClick={()=> {
-        dispatch(AuthLogOut())
-      }}>Log Out</button> 
-      {/* question */}
+          <Link to="/Sign-In">
+          <button className="btn btn-primary" type="submit">Log Out</button>
           </Link>
         </div>
       </nav>

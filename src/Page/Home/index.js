@@ -1,15 +1,17 @@
 import { React, useEffect } from "react";
 import Navbar from "../../Component/Navbar";
+import NavbarLogOut from "../../Component/NavbarLogOut";
 import Footer from "../../Component/Footer";
 import "././Componet/homepage.css";
 import Post1 from "./Componet/Post1";
 import Post2 from "./Componet/Post2";
 import Post3 from "./Componet/Post3";
 import Post4 from "./Componet/post4";
-
 import { useDispatch, useSelector } from "react-redux";
 import { GetMovie } from "../../redux/actions/Movie";
 import {useNavigate} from "react-router-dom"
+import { AuthLogOut } from "../../redux/actions/Auth";
+
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -27,10 +29,18 @@ const Home = () => {
     }
 },[isSignIn])
   console.log(data);
-  
+
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      {isSignIn ? (
+      <Navbar/>
+      // <Navbar  onClick={()=> {
+      //   dispatch(AuthLogOut())
+      // }}>Logout</Navbar>
+    ):(
+     <NavbarLogOut/>
+    )}
       <main>
         <Post1 />
         <Post2 />
@@ -44,7 +54,7 @@ const Home = () => {
 
 export default Home;
 
-// function Home() {
+{/* // function Home() {
 //     useEffect(() => {
 //         document.title = "Tickitz - Home"
 //     })
@@ -62,4 +72,4 @@ export default Home;
 
 //     )
 // }
-// export default Home
+// export default Home */}

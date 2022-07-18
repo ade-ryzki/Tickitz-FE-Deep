@@ -37,3 +37,9 @@ export const AuthSignIn = (formData) => {
       })
   }
 };
+
+ export const AuthLogOut = () => {
+  return {
+      type: "AUTH_LOGOUT"
+  };
+};

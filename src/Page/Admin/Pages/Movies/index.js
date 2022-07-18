@@ -182,11 +182,7 @@ export const MoviesAdmin = () => {
                 timer: 1500
             })
         }
-
-
     }
-
-
 
     return (<>
         <MetaTags title="Tickitz - Movie Admin" />
