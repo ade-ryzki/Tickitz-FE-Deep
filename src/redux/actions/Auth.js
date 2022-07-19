@@ -20,6 +20,7 @@ const SignInError = (error) => {
   };
 };
 
+
 export const AuthSignIn = (formData) => {
   return (dispatch) => {
     dispatch(SignInRequest());
@@ -46,4 +47,5 @@ export const AuthLogOut = () => {
   };
 };
 
-//
+//SignUp
+

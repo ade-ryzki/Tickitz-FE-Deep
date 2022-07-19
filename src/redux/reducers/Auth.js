@@ -26,3 +26,7 @@ const Fetch = (state=initialState, action={})=> {
 } 
 
 export default Fetch
+
+//SignUp
+
+

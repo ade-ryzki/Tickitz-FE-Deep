@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../img/tickitz-white.svg";
 import "../../css/style.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import { AuthSignUp } from './../../redux/actions/AuthSingUp';
 
 function SignUp() {
+    const {data, error, loading, IsSignUp} = useSelector((state)=> state.auth)
+  // console.log(loading, 'loading')
+  const dispatch = useDispatch()
+  let navigate = useNavigate();
+  const [formSignUp, setFormSignUp]  = useState({
+    username: '',
+    email: '',
+    password: ''
+  })
+  const handleSignUp = (e)=>{
+    e.preventDefault()
+    // console.log(formSignIn, 'data login')
+    dispatch(AuthSignUp(formSignUp))
+  }
+  useEffect(()=> {
+    if(IsSignUp === true) {
+        navigate('sign-in', {replace: true}) //kita menghapus routing login dari browser
+    }else {
+        navigate('/sign-up', {replace: true})
+        
+    }
+},[IsSignUp])
   return (
+    
     <>
       <div className="container-fluid">
         <div className="row">
@@ -40,7 +65,7 @@ function SignUp() {
             </div>
           </div>
           <div className="col-md-6 form-container-register">
-            <form className="form-box" action="sign_in.html">
+            <form onSubmit={handleSignUp} className="form-box" action="sign_in.html">
               <div className="mb-4">
                 <h3>Fill your additional details</h3>
               </div>
@@ -54,6 +79,12 @@ function SignUp() {
                   id="exampleInputUserName"
                   // aria-describedby="Username"
                   placeholder="Write your Username"
+                  required onChange={(e)=>{
+                    setFormSignUp((prevData)=>({
+                      ...prevData,
+                      name: e.target.value
+                    }))
+                  }}
                 />
               </div>
               <div className="mb-3 form-input">
@@ -65,7 +96,13 @@ function SignUp() {
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
-                  placeholder="Write your email"         
+                  placeholder="Write your email"
+                  required onChange={(e)=>{
+                    setFormSignUp((prevData)=>({
+                      ...prevData,
+                      email: e.target.value
+                    }))
+                  }}       
                 />
               </div>
               <div className="mb-4 form-input">
@@ -77,6 +114,12 @@ function SignUp() {
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="Write your password"
+                  required onChange={(e)=>{
+                    setFormSignUp((prevData)=>({
+                      ...prevData,
+                      password: e.target.value
+                    }))
+                  }}
                 />
               </div>
               <div className="mb-3 form-check">
