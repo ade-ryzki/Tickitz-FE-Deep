@@ -11,196 +11,206 @@ import { useDispatch } from 'react-redux'
 // import { Navbar } from '../../Component/NavbarAdmin'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { GetMovie } from '../../../../redux/actions/Movie'
 
 export const MoviesAdmin = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate(); //coment  
-    const {data, error, loading } = useSelector((state) => state.movie); //coment
-    const {isSignIn} = useSelector((state) => state.auth); //coment
-      useEffect(()=> {
-        if(isSignIn === false){// change == to ===
-          navigate('/sign-in', {replace: true})
-        }
-    },[isSignIn])
-      console.log(data);
-
-    const [movies, setMovies] = useState({
-        loading: true,
-        results: {
-            data: []
-        },
-    })
-    const [refetch, setRefetch] = useState(false)
-    const [formData, setFormData] = useState({
-        id: '',
-        title: "",
-        genre: "",
-        release_date: "",
-        directed_by: "",
-        duration: "",
-        cast: "",
-        synopsis: "",
-        image: "",
-    })
-
-
-
     useEffect(() => {
+      dispatch(GetMovie({ page: 1, limit: 10 })); // change zero object
+    }, []);
+  
+    const data = useSelector((state) => state.movie);
+    console.log(data.data.results, "test data");
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate(); //coment  
+    // const {data, error, loading } = useSelector((state) => state.movie); //coment
+    // const {isSignIn} = useSelector((state) => state.auth); //coment
+    //   useEffect(()=> {
+    //     if(isSignIn === false){// change == to ===
+    //       navigate('/sign-in', {replace: true})
+    //     }
+    // },[isSignIn])
+    //   console.log(data);
 
-        setMovies((prevState) => ({
-            ...prevState,
-            loading: true
-        }))
-
-        axios({
-            method: 'get',
-            url: `${process.env.REACT_APP_URL_API}/movies`,
-        }).then(res => {
-            setMovies({
-                loading: false,
-                results: res.data,
-            })
-
-        }).catch(err => {
-            console.log(err)
-        })
-    }, [refetch])
-
-    const addmovie = async () => {
-        document.getElementById('modal-title').innerHTML = 'Add Movie'
-        setFormData({
-            title: "",
-            genre: "",
-            release_date: "",
-            directed_by: "",
-            duration: "",
-            cast: "",
-            synopsis: "",
-            image: "",
-        })
-        const result = await axios({
-            method: 'POST',
-            url: `${process.env.REACT_APP_URL_API}/movies`,
-            data: formData,
-        })
-    }
-
-    const editmovie = async (movie) => {
-        document.getElementById('modal-title').innerHTML = 'Edit Movie'
-        setFormData({
-            ...movie,
-            release_date: moment(movie.release_date).format('YYYY-MM-DD'),
-        })
-
-    }
-
-    const deletemovie = async (id) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios({
-                    method: 'delete',
-                    url: `${process.env.REACT_APP_URL_API}/movies/${id}`,
-                }).then(res => {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
-                    setRefetch(!refetch)
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
-        })
-    }
-
-    const searchHandler = async (e) => {
-        e.preventDefault()
-        const search = e.target.value
-        axios({
-            method: 'GET',
-            url: `${process.env.REACT_APP_URL_API}/movies?q=${search}`,
-        }).then(res => {
-            setMovies({
-                loading: false,
-                results: res.data,
-            })
-            // console.log(res.data)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+    // const [movies, setMovies] = useState({
+    //     loading: true,
+    //     results: {
+    //         data: []
+    //     },
+    // })
+    // const [refetch, setRefetch] = useState(false)
+    // const [formData, setFormData] = useState({
+    //     id: '',
+    //     title: "",
+    //     genre: "",
+    //     release_date: "",
+    //     directed_by: "",
+    //     duration: "",
+    //     cast: "",
+    //     synopsis: "",
+    //     image: "",
+    // })
 
 
-    const handleMovie = async (e) => {
-        e.preventDefault()
-        try {
-            if (!formData.id) {
-                const result = await axios({
-                    method: 'POST',
-                    url: `${process.env.REACT_APP_URL_API}/movies`,
-                    data: formData,
-                })
-                if (result.data.status === 200) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: `${result.data.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setRefetch(!refetch)
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: `${result.data.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
 
-            }
-            else {
-                const result = await axios({
-                    method: 'PATCH',
-                    url: `${process.env.REACT_APP_URL_API}/movies/${formData.id}`,
-                    data: formData,
-                })
-                if (result.data.status === 200) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: `${result.data.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    setRefetch(!refetch)
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: `${result.data.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
+    // useEffect(() => {
 
-            }
+    //     setMovies((prevState) => ({
+    //         ...prevState,
+    //         loading: true
+    //     }))
 
-        } catch (error) {
-            Swal.fire({
-                icon: 'error',
-                title: `${error.message}`,
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-    }
+    //     axios({
+    //         method: 'get',
+    //         // url: `${process.env.REACT_APP_URL_API}/movies`,
+    //         url: `${'http://localhost:4000/movies'}`,
+    //     }).then(res => {
+    //         setMovies({
+    //             loading: false,
+    //             results: res.data,
+    //         })
+
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    // }, [refetch])
+
+    // const addmovie = async () => {
+    //     document.getElementById('modal-title').innerHTML = 'Add Movie'
+    //     setFormData({
+    //         title: "",
+    //         genre: "",
+    //         release_date: "",
+    //         directed_by: "",
+    //         duration: "",
+    //         cast: "",
+    //         synopsis: "",
+    //         image: "",
+    //     })
+    //     const result = await axios({
+    //         method: 'POST',
+    //         // url: `${process.env.REACT_APP_URL_API}/movies`,
+    //         url: `${'http://localhost:4000/movies'}`,
+    //         data: formData,
+    //     })
+    // }
+
+    // const editmovie = async (movie) => {
+    //     document.getElementById('modal-title').innerHTML = 'Edit Movie'
+    //     setFormData({
+    //         ...movie,
+    //         release_date: moment(movie.release_date).format('YYYY-MM-DD'),
+    //     })
+
+    // }
+
+    // const deletemovie = async (id) => {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             axios({
+    //                 method: 'delete',
+    //                 url: `${process.env.REACT_APP_URL_API}/movies/${id}`,
+    //             }).then(res => {
+    //                 Swal.fire(
+    //                     'Deleted!',
+    //                     'Your file has been deleted.',
+    //                     'success'
+    //                 )
+    //                 setRefetch(!refetch)
+    //             }).catch(err => {
+    //                 console.log(err)
+    //             })
+    //         }
+    //     })
+    // }
+
+    // const searchHandler = async (e) => {
+    //     e.preventDefault()
+    //     const search = e.target.value
+    //     axios({
+    //         method: 'GET',
+    //         url: `${process.env.REACT_APP_URL_API}/movies?q=${search}`,
+    //     }).then(res => {
+    //         setMovies({
+    //             loading: false,
+    //             results: res.data,
+    //         })
+    //         // console.log(res.data)
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    // }
+
+
+    // const handleMovie = async (e) => {
+    //     e.preventDefault()
+    //     try {
+    //         if (!formData.id) {
+    //             const result = await axios({
+    //                 method: 'POST',
+    //                 url: `${process.env.REACT_APP_URL_API}/movies`,
+    //                 data: formData,
+    //             })
+    //             if (result.data.status === 200) {
+    //                 Swal.fire({
+    //                     icon: 'success',
+    //                     title: `${result.data.message}`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //                 setRefetch(!refetch)
+    //             } else {
+    //                 Swal.fire({
+    //                     icon: 'error',
+    //                     title: `${result.data.message}`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //             }
+
+    //         }
+    //         else {
+    //             const result = await axios({
+    //                 method: 'PATCH',
+    //                 url: `${process.env.REACT_APP_URL_API}/movies/${formData.id}`,
+    //                 data: formData,
+    //             })
+    //             if (result.data.status === 200) {
+    //                 Swal.fire({
+    //                     icon: 'success',
+    //                     title: `${result.data.message}`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //                 setRefetch(!refetch)
+    //             } else {
+    //                 Swal.fire({
+    //                     icon: 'error',
+    //                     title: `${result.data.message}`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //             }
+
+    //         }
+
+    //     } catch (error) {
+    //         Swal.fire({
+    //             icon: 'error',
+    //             title: `${error.message}`,
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //         })
+    //     }
+    // }
 
     return (
     <>
@@ -217,7 +227,9 @@ export const MoviesAdmin = () => {
                             <div className='card shadow'>
                                 <div className='card-body d-flex justify-content-between'>
                                     <h3 className='fw-bold p-auto'>MOVIE</h3>
-                                    <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#modalmovie" onClick={() => addmovie()}>Add Movie</button>
+                                    {/* <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#modalmovie" onClick={() => addmovie()}>Add Movie</button> */}
+                                    {/* or */}
+                                    <button className='btn btn-primary'>Add Movie</button>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +238,9 @@ export const MoviesAdmin = () => {
                                 <div className='card-body'>
                                     <div className="search-box">
                                         <button className="btn-search"><i className="fas fa-search"></i></button>
-                                        <input type="text" className="input-search" onChange={(e) => searchHandler(e)} placeholder="Type to Search..." />
+                                        {/* <input type="text" className="input-search" onChange={(e) => searchHandler(e)} placeholder="Type to Search..." /> */}
+                                        {/* or */}
+                                        <input type="text" className="input-search" placeholder="Type to Search..." />
                                     </div>
                                     <div className='table-responsive'>
                                         <table className='table table-striped table-hover'>
@@ -241,7 +255,7 @@ export const MoviesAdmin = () => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {movies.loading ? <tr><td colSpan='6' className='text-center'>No data</td></tr> : !movies.results.data.length ? <tr><td colSpan='6' className='text-center'>Empty Data</td></tr> : movies.results.data.map((movie, index) => {
+                                                {data.loading ? <tr><td colSpan='6' className='text-center'>No data</td></tr> : !data.data.results ? <tr><td colSpan='6' className='text-center'>Empty Data</td></tr> : data.data.results.map((movie, index) => {
                                                     return (<tr key={index}>
                                                         <th scope='row'>{index + 1}</th>
                                                         <td>{movie.title}</td>
@@ -250,8 +264,11 @@ export const MoviesAdmin = () => {
                                                         <td>{movie.release_date}</td>
                                                         <td>
                                                             <div className='d-flex'>
-                                                                <button className='btn btn-primary mx-2' data-bs-toggle="modal" data-bs-target="#modalmovie" onClick={() => editmovie(movie)}><i className='fa fa-pen-to-square'> </i> </button>
-                                                                <button className='btn btn-danger' onClick={() => deletemovie(movie.id)}><i className='fa fa-trash'> </i></button>
+                                                                {/* <button className='btn btn-primary mx-2' data-bs-toggle="modal" data-bs-target="#modalmovie" onClick={() => editmovie(movie)}><i className='fa fa-pen-to-square'> </i> </button> */}
+                                                                {/* <button className='btn btn-danger' onClick={() => deletemovie(movie.id)}><i className='fa fa-trash'> </i></button> */}
+                                                                {/* or */}
+                                                                <button className='btn btn-primary mx-2'><i className='fa fa-pen-to-square'> </i> </button>
+                                                                <button className='btn btn-danger'><i className='fa fa-trash'> </i></button>
                                                             </div>
                                                         </td>
                                                     </tr>)
@@ -266,7 +283,7 @@ export const MoviesAdmin = () => {
                 </div>
             </div>
         </div>
-        <div className="modal fade" id="modalmovie" tabIndex="-1" aria-labelledby="modalmovie" aria-hidden="true">
+        {/* <div className="modal fade" id="modalmovie" tabIndex="-1" aria-labelledby="modalmovie" aria-hidden="true">
             <div className="modal-dialog modal-lg">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -331,7 +348,7 @@ export const MoviesAdmin = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div> */}
     </>)
 
     // const dispatch = useDispatch();
