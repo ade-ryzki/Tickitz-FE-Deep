@@ -6,6 +6,8 @@ import { Sidebar } from '../../Component/Sidebar'
 import Swal from 'sweetalert2'
 import moment from 'moment'
 import NavbarLogin from './../../../../Component/NavbarLogin';
+import { useDispatch } from 'react-redux';
+import { GetMovie } from './../../../../redux/actions/Movie';
 
 export const MoviesAdmin = () => {
     const [movies, setMovies] = useState({
@@ -26,6 +28,8 @@ export const MoviesAdmin = () => {
         synopsis: "",
         image: "",
     })
+
+
 
     useEffect(() => {
 
@@ -184,7 +188,8 @@ export const MoviesAdmin = () => {
         }
     }
 
-    return (<>
+    return (
+    <>
         <MetaTags title="Tickitz - Movie Admin" />
         <NavbarLogin />
         <div className='container'>
@@ -314,4 +319,10 @@ export const MoviesAdmin = () => {
             </div>
         </div>
     </>)
+
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //   dispatch(GetMovie({ page: 1, limit: 10 })); // change zero object
+    // }, []);
 }
+

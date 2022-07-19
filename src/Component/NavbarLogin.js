@@ -10,20 +10,20 @@ function NavbarLogin() {
         <nav className="navbar navbar-desktop navbar-expand-lg bg-white">
         <div className="container-fluid">
             <Link to="/">
-                <a className="navbar-brand" >
+                <div className="navbar-brand" >
                     <img src={tickitz} alt="logo-tickitz" />
-                </a>
+                </div>
             </Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/">
-                <a className="nav-link active bold" >Home</a>
+                <div className="nav-link active bold" >Home</div>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/list-movie">
-                <a className="nav-link active bold" >List movie</a>
+                <div className="nav-link active bold" >List movie</div>
               </Link>
             </li>
             </ul>
@@ -36,9 +36,9 @@ function NavbarLogin() {
 
       <nav class="navbar nav-phone navbar-expand-lg bg-white p-2">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <div class="navbar-brand" href="#">
             <img src={tickitz} alt="logo-tickitz" />
-          </a>
+          </div>
           <div class="hamburger-button d-flex flex-column align-items-end" id="navbarNav">
             <div class="line mb-1">
             </div>

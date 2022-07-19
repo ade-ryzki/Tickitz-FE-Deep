@@ -1,68 +1,77 @@
-import {Link} from "react-router-dom"
-import tickitz from "../img/Tickitz.svg"
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
+import tickitz from "../img/Tickitz.svg";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthLogOut } from "../redux/actions/Auth";
-import { GetMovie } from './../redux/actions/Movie';
-
+import { GetMovie } from "./../redux/actions/Movie";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const { isSignIn } = useSelector((state) => state.auth);
   useEffect(() => {
-    dispatch((GetMovie({ page: 1, limit: 10 })));
-  },[]);
-    return(
-        <>
-        <nav className="navbar navbar-desktop navbar-expand-lg bg-white">
+    dispatch(GetMovie({ page: 1, limit: 10 }));
+  }, []);
+
+  return (
+    <>
+      <nav className="navbar navbar-desktop navbar-expand-lg bg-white">
         <div className="container-fluid">
-            <Link to="/">
-                <a className="navbar-brand" >
-                    <img src={tickitz} alt="logo-tickitz" />
-                </a>
-            </Link>
+          <Link to="/">
+            <div className="navbar-brand">
+              <img src={tickitz} alt="logo-tickitz" />
+            </div>
+          </Link>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/">
-                <a className="nav-link active bold" >Home</a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/list-movie">
-                <a className="nav-link active bold" >List movie</a>
-              </Link>
-            </li>
+              <li className="nav-item">
+                <Link to="/">
+                  <div className="nav-link active bold">Home</div>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/list-movie">
+                  <div className="nav-link active bold">List movie</div>
+                </Link>
+              </li>
             </ul>
           </div>
-          <Link to="/sign-up">
-          {/* <button className="btn btn-primary" type="submit">Sign Up</button> */}
-          <button className="btn btn-primary"onClick={()=> {
-        dispatch(AuthLogOut())
-      }}>Log Out</button> 
-      {/* question */}
+          <Link to="/sign-in">
+            {/* <button className="btn btn-primary" type="submit">Sign Up</button> */}
+            {isSignIn ? (
+              <button
+                className="btn btn-primary"
+                onClick={() => {
+                  dispatch(AuthLogOut());
+                }}
+              >
+                Log Out
+              </button>
+            ) : (
+              <Link to="/sign-in">
+                {" "}
+                <button className="btn btn-primary">Sign In</button>{" "}
+              </Link>
+            )}
           </Link>
         </div>
       </nav>
-
-      <nav class="navbar nav-phone navbar-expand-lg bg-white p-2">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+      <nav className="navbar nav-phone navbar-expand-lg bg-white p-2">
+        <div className="container-fluid">
+          <div className="navbar-brand" href="#">
             <img src={tickitz} alt="logo-tickitz" />
-          </a>
-          <div class="hamburger-button d-flex flex-column align-items-end" id="navbarNav">
-            <div class="line mb-1">
-            </div>
-            <div class="line-2 mb-1">
-            </div>
-            <div class="line"></div>
+          </div>
+          <div
+            className="hamburger-button d-flex flex-column align-items-end"
+            id="navbarNav"
+          >
+            <div className="line mb-1"></div>
+            <div className="line-2 mb-1"></div>
+            <div className="line"></div>
           </div>
         </div>
       </nav>
-        </>
-        
-        
-        
-    )
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;

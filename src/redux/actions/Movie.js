@@ -9,49 +9,37 @@ const GetMovieRequest = () => {
 const GetMovieSucess = (data) => {
   return {
     type: "GET_MOVIE_SUCCESS",
-    payload: data
+    payload: data,
   };
 };
 
 const GetMovieError = (error) => {
-    return {
-        type: "GET_MOVIE_ERROR",
-        payload: error
-    };
+  return {
+    type: "GET_MOVIE_ERROR",
+    payload: error,
+  };
 };
 
-export const GetMovie = ({page=1, limit}) => {
+export const GetMovie = ({ page = 1, limit }) => {
   return (dispatch) => {
-      dispatch(GetMovieRequest())
-      axios({
-          method: "GET",
-          url: `http://localhost:4000/api/v1/movies${page ? `?page=${page}`:``}${limit ? `&limit=${limit}`:``}`,
-        }) .then((res)=> { //ketika sukses, dispatch sucess
-          dispatch(GetMovieSucess(res.data.data))
-          // dispatch(GetMoviesSucess(res.data.data.results)) //trigger / dispatch
-          //res.data.data.results, mengkorbankan, data lain kayak totalpage, totalRow gabisa ngambil//v1 (BAD)
-          // if(res.data.message === "EMPTY") {
-          //   dispatch(GetMoviesSucess(res.data.message)) 
-          // }
-      }).catch((err)=> {
-          dispatch(GetMovieError(err))
+    dispatch(GetMovieRequest());
+    axios({
+      method: "GET",
+      url: `http://localhost:4000/api/v1/movies${page ? `?page=${page}` : ``}${
+        limit ? `&limit=${limit}` : ``
+      }`,
+    })
+      .then((res) => {
+        //ketika sukses, dispatch sucess
+        dispatch(GetMovieSucess(res.data.data));
+        // dispatch(GetMoviesSucess(res.data.data.results)) //trigger / dispatch
+        //res.data.data.results, mengkorbankan, data lain kayak totalpage, totalRow gabisa ngambil//v1 (BAD)
+        // if(res.data.message === "EMPTY") {
+        //   dispatch(GetMoviesSucess(res.data.message))
+        // }
       })
-  }
+      .catch((err) => {
+        dispatch(GetMovieError(err));
+      });
+  };
 };
-
-
-
-
-
-// return (dispatch) => {
-//     dispatch(GetMoviesRequest())
-//     try {
-//         const result = axios({
-//             method: "GET",
-//             url: "https://test.dhanz.me/api/v1/movies",
-//         })
-//         dispatch(GetMoviesSucess(result.data))
-//     } catch (error) {
-//         dispatch(GetMoviesRequest(err.response))
-//     }
-// }

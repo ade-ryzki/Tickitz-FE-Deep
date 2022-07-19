@@ -93,7 +93,6 @@ const SignIn=(props)=> {
                 {error && (
                     <div>{error.message}</div>
                 )}
-              {/* <button type="submit" className= {`btn btn-join-now py-3 mb-4`} disabled={loading ? true:false}>{'Loading...':'Sign In'}</button> */}
               <div className="text-center link mb-4">
                 Forgot your password?
                 <a href="forgot_password.html">Reset now</a>

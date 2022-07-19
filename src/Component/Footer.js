@@ -13,21 +13,21 @@ function Footer() {
         <div class="row mt-5 mx-5 p-5 justify-content-center">
           <div class="col-lg-3 logo me-5">
             <div class="container d-flex flex-column ">
-              <img class= "mb-4" src={tickitz}/>
+              <img class= "mb-4" src={tickitz} alt='tickitz'/>
               <p class="font-s">Stop waiting in line. Buy tickets</p>
               <p class="font-s">conveniently, watch movies queitly</p>
             </div>
           </div>
           <div class="col-lg-2 explore me-5">
             <div class="container d-flex flex-column my-3">
-              <a class="bold mb-3" href="#">Explore</a>
-              <a href="#">Home</a>
-              <a href="#">List Movie</a>
+              <div class="bold mb-3" href="#">Explore</div>
+              <div href="#">Home</div>
+              <div href="#">List Movie</div>
             </div>
           </div>
           <div class="col-lg-2 our-sponsor me-5 my-3">
             <div class="container d-flex flex-column">
-              <a class="bold mb-3" href="#">Our Sponsor</a>
+              <div class="bold mb-3" href="#">Our Sponsor</div>
               <img class="mb-3" src={EDU} width="120px" height="45px" alt="movie" />
               <img class="mb-3" src={CINEONE} width="170px" height="26px"alt="movie" />
               <img class="mb-3" src={HIFLIX} width="80px" height="25px" alt="movie" />
@@ -35,22 +35,22 @@ function Footer() {
           </div>
           <div class="col-lg-2 follow-us me-5 mt-3">
             <div class="container d-flex flex-column">
-              <a class="bold mb-3" href="#">Follow Us</a>
+              <div class="bold mb-3" href="#">Follow Us</div>
               <div class="social-medial mb-2">
                 <img class="pe-2" src={FB} alt="facebook" />
-                <a class="font-s" href="#">tickitz cinema.id</a>
+                <div class="font-s" href="#">tickitz cinema.id</div>
               </div>
               <div class="social-medial mb-2">
                 <img src={IG}  alt="" />
-                <a class="font-s" href="#">tickitz.id</a>
+                <div class="font-s" href="#">tickitz.id</div>
               </div>
               <div class="social-medial mb-2">
                 <img src={TW} alt="" />
-                <a class="font-s" href="#">tickitz.id</a>
+                <div class="font-s" href="#">tickitz.id</div>
               </div>
               <div class="social-medial mb-2">
                 <img src={YT} alt="" />
-                <a class="font-s" href="#">tickitz cinema.id</a>
+                <div class="font-s" href="#">tickitz cinema.id</div>
               </div>
             </div>
           </div>
