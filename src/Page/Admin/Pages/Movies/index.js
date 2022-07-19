@@ -351,9 +351,5 @@ export const MoviesAdmin = () => {
         </div> */}
     </>)
 
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //   dispatch(GetMovie({ page: 1, limit: 10 })); // change zero object
-    // }, []);
 }
 
