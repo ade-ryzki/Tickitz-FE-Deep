@@ -5,31 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetMovie } from "../../../redux/actions/Movie";
 
 function Post2() {
-  // const [movieSchedule, setMovieSchedule] = useState({
-  //     loading: false,
-  //     results: {
-  //         data: []
-  //     }
-  // })
-
-  // useEffect(() => {
-  //     setMovieSchedule((prevState) => ({
-  //         ...prevState,
-  //         loading: true
-  //     }))
-  //     axios({
-  //         method: 'GET',
-  //         url: ' https://test.dhanz.me/api/v1/movies',
-  //     }).then((res) => {
-  //         setMovieSchedule({
-  //             loading: false,
-  //             results: res.data
-  //         })
-  //     })
-  //         .catch((err) => {
-  //             console.log(err)
-  //         })
-  // }, [])
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetMovie({ page: 1, limit: 10 })); // change zero object
