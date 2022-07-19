@@ -38,9 +38,7 @@ function Navbar() {
           <Link to="/sign-in">
             {/* <button className="btn btn-primary" type="submit">Sign Up</button> */}
             {isSignIn ? (
-              <button
-                className="btn btn-primary"
-                onClick={() => {
+              <button className="btn btn-primary" onClick={() => {
                   dispatch(AuthLogOut());
                 }}
               >
@@ -48,8 +46,7 @@ function Navbar() {
               </button>
             ) : (
               <Link to="/sign-in">
-                {" "}
-                <button className="btn btn-primary">Sign In</button>{" "}
+                {" "}<button className="btn btn-primary">Sign In</button>{" "}
               </Link>
             )}
           </Link>
