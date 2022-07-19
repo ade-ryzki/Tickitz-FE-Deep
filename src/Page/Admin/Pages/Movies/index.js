@@ -1,15 +1,29 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import MetaTags from '../../Component/Metatags'
-// import { Navbar } from '../../Component/NavbarAdmin'
 import { Sidebar } from '../../Component/Sidebar'
 import Swal from 'sweetalert2'
 import moment from 'moment'
-import NavbarLogin from './../../../../Component/NavbarLogin';
-import { useDispatch } from 'react-redux';
-import { GetMovie } from './../../../../redux/actions/Movie';
+import NavbarLogin from './../../../../Component/NavbarLogin'
+import { useDispatch } from 'react-redux'
+
+// import { GetMovie } from './../../../../redux/actions/Movie';
+// import { Navbar } from '../../Component/NavbarAdmin'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const MoviesAdmin = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); //coment  
+    const {data, error, loading } = useSelector((state) => state.movie); //coment
+    const {isSignIn} = useSelector((state) => state.auth); //coment
+      useEffect(()=> {
+        if(isSignIn === false){// change == to ===
+          navigate('/sign-in', {replace: true})
+        }
+    },[isSignIn])
+      console.log(data);
+
     const [movies, setMovies] = useState({
         loading: true,
         results: {
@@ -312,7 +326,7 @@ export const MoviesAdmin = () => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={(e) => handleMovie(e)} data-bs-dismiss="modal">Save changes</button>
+                            <button type="button" className="btn btn-primary" onClick={(e) => handleMovie(e)} data-bs-dismiss="modal">Save</button>
                         </div>
                     </form>
                 </div>

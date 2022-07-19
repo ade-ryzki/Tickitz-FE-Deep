@@ -18,7 +18,7 @@ export const Sidebar = () => {
                 </Link>
                 <hr />
                 <Link to={"/"} className="text-black text-decoration-none">
-                  Log out
+                  Back
                 </Link>
               </div>
             </div>

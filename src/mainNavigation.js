@@ -8,7 +8,7 @@ const MainNavigation = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/admin' element={<DashboardAdmin />} />
+        {/* <Route path='/admin' element={<DashboardAdmin />} /> */}
         <Route path='/admin/movie' element={<MoviesAdmin />} />
         <Route path='/admin/cinema' element={<CinemaAdmin />} />
         <Route path="/list-movie" element={<ListMovie />} />
@@ -20,7 +20,9 @@ const MainNavigation = () => {
         <Route path="/Sign-In" element={<PublicRoute isRestricted={true}><SignIn/></PublicRoute>}/>
         <Route path="/sign-up" element={<PublicRoute isRestricted={true}><SignUp/></PublicRoute>}/>
           {/* Auth PrivateRoute*/}
-        <Route path="/dasboard" element={<PrivateRoute><Home/></PrivateRoute>}/>
+        {/* <Route path="/dasboard" element={<PrivateRoute><Home/></PrivateRoute>}/> */}
+        <Route path="/admin" element={<PrivateRoute><DashboardAdmin/></PrivateRoute>}/>
+        <Route path="/admin/movie" element={<PrivateRoute><DashboardAdmin/></PrivateRoute>}/>
         {/* <Route path="/sign-up" element={<SignUp />} /> */}
     </Routes>
     </BrowserRouter>
