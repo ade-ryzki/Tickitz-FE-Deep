@@ -21,7 +21,7 @@ function Post2() {
             <p className="text-nowshowing">Now Showing</p>
           </div>
           <div className="col-6 text-end">
-            <Link to={"/movies"} className="fw-bolder text-decoration-none">
+            <Link to={"/sign-up"} className="fw-bolder text-decoration-none">
               view all
             </Link>
           </div>

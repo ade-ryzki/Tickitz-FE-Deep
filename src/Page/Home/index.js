@@ -1,15 +1,13 @@
-import { React, useEffect } from "react";
-import Navbar from "../../Component/Navbar";
-import Footer from "../../Component/Footer";
-import "././Componet/homepage.css";
-import Post1 from "./Componet/Post1";
-import Post2 from "./Componet/Post2";
-import Post3 from "./Componet/Post3";
-import Post4 from "./Componet/post4";
-import { useDispatch } from "react-redux";
-import { GetMovie } from "../../redux/actions/Movie";
-// import NavbarLogOut from "../../Component/NavbarLogOut";
-// import { useSelector } from "react-redux";
+import { React, useEffect } from "react"
+import Navbar from "../../Component/Navbar"
+import Footer from "../../Component/Footer"
+import "././Componet/homepage.css"
+import Post1 from "./Componet/Post1"
+import Post2 from "./Componet/Post2"
+import Post3 from "./Componet/Post3"
+import Post4 from "./Componet/post4"
+import { useDispatch } from "react-redux"
+import { GetMovie } from "../../redux/actions/Movie"
 import {useNavigate} from "react-router-dom"
 // import { AuthLogOut } from "../../redux/actions/Auth";
 

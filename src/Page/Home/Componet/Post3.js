@@ -2,6 +2,7 @@ import React from "react"
 import blackwidow from "../../../img/black-widow.png"
 import witches from "../../../img/the witches.png"
 import tennet from "../../../img/Tenet.png"
+import { Link } from 'react-router-dom';
 
 function Post3 () {
     return(
@@ -12,7 +13,7 @@ function Post3 () {
               <h2>Upcoming Movies</h2>
             </div>
             <div className="col d-flex justify-content-end">
-              <a href="#">view all</a>
+              <Link to='/sign-up'>view all</Link>
             </div>
           </div>
         </div>
